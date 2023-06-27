@@ -45,7 +45,6 @@ public class CodeController {
         return codeService.code(idx);
     }
 
-
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "등록 성공"),
             @ApiResponse(responseCode = "400", description = "등록 요청 실패",content = @Content(schema = @Schema(implementation = ErrorMessageResponse.class))),
@@ -56,7 +55,6 @@ public class CodeController {
     public ResponseEntity addCode(CodeAddRequest codeAddRequest) {
         return codeService.addCode(codeAddRequest);
     }
-
 
     @ApiResponses(value = {
             @ApiResponse(responseCode = "204", description = "수정 성공"),
