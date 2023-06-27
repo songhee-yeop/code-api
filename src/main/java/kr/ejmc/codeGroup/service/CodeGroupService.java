@@ -87,6 +87,10 @@ public class CodeGroupService {
     public ResponseEntity deleteCodeGroup(Long idx) {
         try {
             CodeGroupEntity codeGroupEntity = getCodeGroupEntityByIdx(idx);
+            if(codeGroupEntity == null) {
+                throw new IllegalArgumentException("삭제하려는 코드 그룹이 존재하지 않습니다.");
+            }
+
             if(!codeGroupEntity.getCodes().isEmpty()) {
                 throw new IllegalArgumentException("코드그룹 안에있는 코드를 모두 삭제한 이후에 삭제 가능합니다.");
             }

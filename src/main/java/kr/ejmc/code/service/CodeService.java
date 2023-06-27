@@ -64,7 +64,7 @@ public class CodeService {
             }
             List<CodeEntity> groupInCode = codeGroupEntity.getCodes();
             if(checkGroupCodeDuplicatation(groupInCode, codeAddRequest.getCode())) {
-                throw new IllegalArgumentException("해당하는 코드 그룹 내 동일한 코드명이 존재합니다.");
+                throw new IllegalArgumentException("해당하는 코드 그룹 내 동일한 코드가 존재합니다.");
             }
 
             CodeEntity codeEntity = new CodeEntity(codeAddRequest, codeGroupEntity);
