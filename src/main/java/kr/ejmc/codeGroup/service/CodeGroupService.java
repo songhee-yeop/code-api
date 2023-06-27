@@ -65,7 +65,7 @@ public class CodeGroupService {
                 throw new IllegalArgumentException("존재하는 코드그룹명입니다.");
             }
 
-            CodeGroupEntity codeGroupEntity = codeGroupRepository.findByIdx(codeGroupUpdateRequest.getCodeIdx());
+            CodeGroupEntity codeGroupEntity = getCodeGroupEntityByIdx(codeGroupUpdateRequest.getCodeIdx());
             if (codeGroupEntity == null) {
                 throw new IllegalArgumentException("바꾸려는 코드 그룹이 존재하지 않습니다.");
             }
@@ -86,7 +86,7 @@ public class CodeGroupService {
 
     public ResponseEntity deleteCodeGroup(Long idx) {
         try {
-            CodeGroupEntity codeGroupEntity = codeGroupRepository.findByIdx(idx);
+            CodeGroupEntity codeGroupEntity = getCodeGroupEntityByIdx(idx);
             if(!codeGroupEntity.getCodes().isEmpty()) {
                 throw new IllegalArgumentException("코드그룹 안에있는 코드를 모두 삭제한 이후에 삭제 가능합니다.");
             }
@@ -100,5 +100,9 @@ public class CodeGroupService {
             log.error("error", e);
             return ResponseEntityCustom.makeResponseEntityOnlyType(ResponseType.INTERNAL_SERVER_ERROR);
         }
+    }
+
+    public CodeGroupEntity getCodeGroupEntityByIdx(Long idx) {
+        return codeGroupRepository.findByIdx(idx);
     }
 }

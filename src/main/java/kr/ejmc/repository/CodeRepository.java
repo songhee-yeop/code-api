@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface CodeRepository extends JpaRepository<CodeEntity, Long> {
     List<CodeEntity> findByCodeGroup_Idx(Long codeGroupIdx);
+    CodeEntity findByIdx(Long idx);
 }
